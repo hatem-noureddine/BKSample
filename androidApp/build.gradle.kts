@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.bank.android.application)
     alias(libs.plugins.bank.compose.multiplatform)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.bank.detekt)
+    alias(libs.plugins.bank.ktlint)
 }
 
 android {

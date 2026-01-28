@@ -1,0 +1,79 @@
+{
+  "banks": [
+    {
+      "name": "CA Languedoc",
+      "isCA": 1,
+      "accounts": [
+        {
+          "id": "1",
+          "order": 1,
+          "holder": "M. DUPONT JEAN",
+          "role": 1,
+          "contract_number": "1234567890",
+          "label": "Compte de Chèques",
+          "product_code": "CHK",
+          "balance": 1500.50,
+          "operations": [
+            {
+              "id": "101",
+              "title": "Prélèvement EDF",
+              "amount": "-150,00",
+              "category": "Energie",
+              "date": "1644870724"
+            },
+            {
+              "id": "102",
+              "title": "Virement Salaire",
+              "amount": "2500,00",
+              "category": "Salaire",
+              "date": "1738078523"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "order": 2,
+          "holder": "M. DUPONT JEAN",
+          "role": 1,
+          "contract_number": "0987654321",
+          "label": "Livret A",
+          "product_code": "LVA",
+          "balance": 10500.00,
+          "operations": [
+            {
+              "id": "111",
+              "title": "Prélèvement EDF",
+              "amount": "-150,00",
+              "category": "Energie",
+              "date": "1644870724"
+            },
+            {
+              "id": "112",
+              "title": "Virement Salaire",
+              "amount": "2500,00",
+              "category": "Salaire",
+              "date": "1644870725"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Boursorama",
+      "isCA": 0,
+      "accounts": [
+        {
+          "id": "3",
+          "order": 1,
+          "holder": "M. DUPONT JEAN",
+          "role": 1,
+          "contract_number": "5678901234",
+          "label": "Compte Courant",
+          "product_code": "CC",
+          "balance": 340.20,
+          "operations": []
+        }
+      ]
+    }
+  ]
+}

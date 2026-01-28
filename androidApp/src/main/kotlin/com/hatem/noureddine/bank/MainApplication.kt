@@ -1,10 +1,9 @@
 package com.hatem.noureddine.bank
 
 import android.app.Application
+import com.hatem.noureddine.bank.di.KoinFactory
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
 import org.koin.androix.startup.KoinStartup
-import org.koin.core.logger.Level
 import org.koin.dsl.KoinConfiguration
 
 class MainApplication :
@@ -12,7 +11,7 @@ class MainApplication :
     KoinStartup {
     override fun onKoinStartup(): KoinConfiguration =
         KoinConfiguration {
-            androidLogger(Level.DEBUG)
             androidContext(this@MainApplication)
+            KoinFactory.initKoin(this)
         }
 }
