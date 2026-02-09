@@ -32,14 +32,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
-      - name: Run Detekt
-        run: ./gradlew detekt
-
-      - name: Run Ktlint Check
-        run: ./gradlew ktlintCheck
-
-      - name: Run Android Lint
-        run: ./gradlew lintDebug
+      - name: Run Code Analysis (Detekt, Ktlint, Lint)
+        run: ./gradlew detekt ktlintCheck lintDebug --continue
 
       - name: Run JVM Unit Tests (Coverage)
         run: ./gradlew :composeApp:jvmTest
