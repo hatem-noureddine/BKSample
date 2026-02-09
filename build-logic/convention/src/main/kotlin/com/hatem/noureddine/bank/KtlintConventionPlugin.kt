@@ -34,9 +34,8 @@ class KtlintConventionPlugin : Plugin<Project> {
                 }
                 filter {
                     exclude { it.file.path.contains("build/") }
+                    exclude { it.file.path.contains("bin/") }
                 }
-
-
             }
         }
     }
