@@ -1,9 +1,15 @@
 # BankTest - Kotlin Multiplatform Banking App
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BankTest&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=BankTest)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BankTest&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BankTest)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=BankTest&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=BankTest)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BankTest&metric=coverage)](https://sonarcloud.io/summary/new_code?id=BankTest)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=BankTest&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=BankTest)
+![AGP](https://img.shields.io/badge/AGP-9.0.0-blue?logo=android)
+![Platform](https://img.shields.io/badge/Platform-Android_|_iOS-brightgreen)
 ![Kotlin](https://img.shields.io/badge/kotlin-2.3.10-blue.svg?logo=kotlin)
 ![Compose Multiplatform](https://img.shields.io/badge/Compose_Multiplatform-1.10.0-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 
 **BankTest** is a modern, cross-platform mobile banking application built with **Kotlin Multiplatform (KMP)** and **Compose Multiplatform**. It demonstrates best practices in mobile development, focusing on **Clean Architecture**, **Solid Principles**, and a robust **Offline-First** strategy.
 
