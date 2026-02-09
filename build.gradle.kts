@@ -9,4 +9,14 @@ plugins {
     alias(libs.plugins.room) apply false
     alias(libs.plugins.kotlinCocoapods) apply false
     alias(libs.plugins.bank.sonar)
+    alias(libs.plugins.detekt)
+}
+
+val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(layout.buildDirectory.file("reports/detekt/merge.sarif"))
+    input.from(
+        subprojects.map { subproject ->
+            subproject.layout.buildDirectory.file("reports/detekt/detekt.sarif")
+        }
+    )
 }
