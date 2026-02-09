@@ -139,13 +139,13 @@ class OperationsViewModelTest {
         runTest(testDispatcher) {
             // Day 1: 1672531200L (2023-01-01)
             // Day 2: 1672617600L (2023-01-02)
-            val day1_10am = 1672567200L
-            val day1_12pm = 1672574400L
+            val day1At10am = 1672567200L
+            val day1At12pm = 1672574400L
             val day2 = 1672617600L
 
             val operations = listOf(
-                Operation("1", "Z_Title", 10.0, "cat", day1_12pm), // Day 1, later time
-                Operation("2", "A_Title", 10.0, "cat", day1_10am), // Day 1, earlier time
+                Operation("1", "Z_Title", 10.0, "cat", day1At12pm), // Day 1, later time
+                Operation("2", "A_Title", 10.0, "cat", day1At10am), // Day 1, earlier time
                 Operation("3", "B_Title", 10.0, "cat", day2)       // Day 2
             )
             // Expected Sort:
