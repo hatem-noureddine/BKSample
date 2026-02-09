@@ -2,8 +2,8 @@ package com.hatem.noureddine.bank.presentation.viewmodel.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher
 import com.hatem.noureddine.bank.domain.model.AppMode
+import com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher
 import com.hatem.noureddine.bank.domain.usecase.GetAppModeUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -19,11 +19,11 @@ class GetAccountOperationsUseCaseTest {
             // Same date, should be sorted by title
             Operation(id = "2", title = "A Operation", amount = 20.0, category = "cat", date = 1000L),
             Operation(
-                id = "3", 
-                title = "C Operation", 
-                amount = 30.0, 
-                category = "cat", 
-                date = 2000L
+                id = "3",
+                title = "C Operation",
+                amount = 30.0,
+                category = "cat",
+                date = 2000L,
             ), // Newer date, should be first
         )
 
@@ -44,8 +44,7 @@ class GetAccountOperationsUseCaseTest {
         object : BankRepository {
             override fun getBanks(): Flow<List<Bank>> = flowOf(emptyList())
 
-            override fun getAccount(id: String): 
-            Flow<Account?> = if (id == "acc1") flowOf(fakeAccount) else flowOf(null)
+            override fun getAccount(id: String): Flow<Account?> = if (id == "acc1") flowOf(fakeAccount) else flowOf(null)
 
             override suspend fun syncData(forceRefresh: Boolean) {}
 

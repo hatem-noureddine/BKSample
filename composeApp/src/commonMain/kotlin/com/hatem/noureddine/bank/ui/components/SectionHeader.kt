@@ -1,7 +1,5 @@
 package com.hatem.noureddine.bank.ui.components
 
-import androidx.compose.ui.tooling.preview.Preview
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -19,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
@@ -66,7 +65,7 @@ private fun SectionHeaderExpandedPreview() {
     SectionHeader(
         title = "Crédit Agricole",
         isExpanded = true,
-        onToggle = {}
+        onToggle = {},
     )
 }
 
@@ -76,6 +75,6 @@ private fun SectionHeaderCollapsedPreview() {
     SectionHeader(
         title = "Autres Banques",
         isExpanded = false,
-        onToggle = {}
+        onToggle = {},
     )
 }

@@ -50,11 +50,14 @@ class SettingsViewModelTest {
             val repo = FakeSettingsRepository()
             val bankRepo =
                 object : com.hatem.noureddine.bank.domain.repository.BankRepository {
-                    override fun getBanks() = 
-                        kotlinx.coroutines.flow.flowOf(emptyList<com.hatem.noureddine.bank.domain.model.Bank>())
+                    override fun getBanks() = kotlinx.coroutines.flow.flowOf(emptyList<com.hatem.noureddine.bank.domain.model.Bank>())
+
                     override fun getAccount(id: String) = kotlinx.coroutines.flow.flowOf(null)
+
                     override fun getLastSyncTime() = kotlinx.coroutines.flow.flowOf(null)
+
                     override suspend fun syncData(forceRefresh: Boolean) {}
+
                     override suspend fun clearLastSyncTime() {}
                 }
             val dataSourceSwitcher =
@@ -78,11 +81,14 @@ class SettingsViewModelTest {
             val repo = FakeSettingsRepository()
             val bankRepo =
                 object : com.hatem.noureddine.bank.domain.repository.BankRepository {
-                    override fun getBanks() = 
-                        kotlinx.coroutines.flow.flowOf(emptyList<com.hatem.noureddine.bank.domain.model.Bank>())
+                    override fun getBanks() = kotlinx.coroutines.flow.flowOf(emptyList<com.hatem.noureddine.bank.domain.model.Bank>())
+
                     override fun getAccount(id: String) = kotlinx.coroutines.flow.flowOf(null)
+
                     override fun getLastSyncTime() = kotlinx.coroutines.flow.flowOf(null)
+
                     override suspend fun syncData(forceRefresh: Boolean) {}
+
                     override suspend fun clearLastSyncTime() {}
                 }
             val dataSourceSwitcher =

@@ -3,23 +3,22 @@ package com.hatem.noureddine.bank.ui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
-import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertDoesNotExist
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.hatem.noureddine.bank.domain.model.Account
-import com.hatem.noureddine.bank.domain.model.CABank
 import com.hatem.noureddine.bank.domain.model.BankSections
+import com.hatem.noureddine.bank.domain.model.CABank
 import com.hatem.noureddine.bank.presentation.viewmodel.accounts.AccountsViewModel
 import com.hatem.noureddine.bank.ui.screens.AccountsScreen
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flowOf
 import org.junit.Rule
 import org.junit.Test
 
 class AccountsScreenTest {
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
@@ -27,10 +26,11 @@ class AccountsScreenTest {
     @Test
     fun accountsScreen_displaysHeader_whenLoadingFinished() {
         // Mock state
-        val state = AccountsViewModel.State(
-            isLoading = false,
-            sections = BankSections(emptyList(), emptyList())
-        )
+        val state =
+            AccountsViewModel.State(
+                isLoading = false,
+                sections = BankSections(emptyList(), emptyList()),
+            )
 
         composeTestRule.setContent {
             SharedTransitionLayout {
@@ -41,7 +41,7 @@ class AccountsScreenTest {
                         onAccountClick = {},
                         effectFlow = emptyFlow(),
                         sharedTransitionScope = this@SharedTransitionLayout,
-                        animatedVisibilityScope = this
+                        animatedVisibilityScope = this,
                     )
                 }
             }

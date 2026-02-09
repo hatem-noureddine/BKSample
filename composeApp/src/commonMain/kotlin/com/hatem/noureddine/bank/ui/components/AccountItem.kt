@@ -4,35 +4,23 @@ import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.SharedTransitionScope
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hatem.noureddine.bank.domain.model.Account
-import com.hatem.noureddine.bank.ui.theme.ColorNegativeBalance
-import com.hatem.noureddine.bank.ui.theme.ColorPositiveBalance
 
 /**
  * Composable representing a single Account card in the list.
@@ -99,24 +87,25 @@ fun AccountItem(
 @Preview
 @Composable
 private fun AccountItemPreview() {
-    val account = Account(
-        id = "1",
-        order = 1,
-        holder = "Holder",
-        role = 1,
-        contractNumber = "12345",
-        label = "Compte Courant",
-        productCode = "CODE",
-        balance = 1234.56,
-        operations = emptyList()
-    )
+    val account =
+        Account(
+            id = "1",
+            order = 1,
+            holder = "Holder",
+            role = 1,
+            contractNumber = "12345",
+            label = "Compte Courant",
+            productCode = "CODE",
+            balance = 1234.56,
+            operations = emptyList(),
+        )
     SharedTransitionLayout {
         AnimatedVisibility(visible = true) {
             AccountItem(
                 account = account,
                 onClick = {},
                 sharedTransitionScope = this@SharedTransitionLayout,
-                animatedVisibilityScope = this
+                animatedVisibilityScope = this,
             )
         }
     }

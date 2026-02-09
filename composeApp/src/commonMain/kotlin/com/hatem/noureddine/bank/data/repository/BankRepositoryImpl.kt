@@ -96,6 +96,7 @@ class BankRepositoryImpl(
             preferences[KEY_LAST_SYNC_TIME] = nowStr
         }
     }
+
     override suspend fun clearLastSyncTime() {
         dataStore.edit { preferences ->
             preferences.remove(KEY_LAST_SYNC_TIME)

@@ -33,10 +33,10 @@ class KtlintConventionPlugin : Plugin<Project> {
                     reporter(ReporterType.CHECKSTYLE) // Generates XML
                 }
                 filter {
-                    exclude("**/build/**")
-                    exclude("**/bin/**")
-                    exclude("**/generated/**")
+                    exclude { it.file.path.contains("build/") }
                 }
+
+
             }
         }
     }

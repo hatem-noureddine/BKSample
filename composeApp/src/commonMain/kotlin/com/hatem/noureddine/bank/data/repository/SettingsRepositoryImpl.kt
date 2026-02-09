@@ -29,7 +29,9 @@ class SettingsRepositoryImpl(
             } else {
                 try {
                     AppMode.valueOf(modeName)
-                } catch (@Suppress("SwallowedException", "TooGenericExceptionCaught") e: Exception) {
+                } catch (
+                    @Suppress("SwallowedException", "TooGenericExceptionCaught") e: Exception,
+                ) {
                     AppMode.MOCK
                 }
             }

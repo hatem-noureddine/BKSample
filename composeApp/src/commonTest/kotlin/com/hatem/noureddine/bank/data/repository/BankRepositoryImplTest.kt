@@ -5,7 +5,6 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import com.hatem.noureddine.bank.data.datasource.BankDataSource
 import com.hatem.noureddine.bank.data.dto.AccountDto
 import com.hatem.noureddine.bank.data.dto.BankDto
-import com.hatem.noureddine.bank.data.dto.BankMockResponseDto
 import com.hatem.noureddine.bank.data.dto.OperationDto
 import com.hatem.noureddine.bank.data.local.dao.BankDao
 import com.hatem.noureddine.bank.data.local.entity.AccountEntity
@@ -39,8 +38,7 @@ class BankRepositoryImplTest {
 
         override fun getBanksWithAccounts(): Flow<List<BankWithAccounts>> = banksWithAccountsFlow
 
-        override fun getAccountWithOperations(accountId: String): 
-            Flow<AccountWithOperations?> = accountWithOperationsFlow
+        override fun getAccountWithOperations(accountId: String): Flow<AccountWithOperations?> = accountWithOperationsFlow
 
         override suspend fun insertBanks(banks: List<BankEntity>) {}
 

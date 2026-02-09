@@ -40,6 +40,7 @@ val generateSecrets by tasks.registering {
             internal object Secrets {
                 const val SQLCIPHER_PASSPHRASE = "$passphrase"
             }
+
             """.trimIndent(),
         )
     }

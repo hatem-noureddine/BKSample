@@ -1,7 +1,5 @@
 package com.hatem.noureddine.bank.ui.screens
 
-import androidx.compose.ui.tooling.preview.Preview
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hatem.noureddine.bank.domain.model.Account
 import com.hatem.noureddine.bank.presentation.viewmodel.operations.OperationsViewModel
@@ -32,7 +31,7 @@ import com.hatem.noureddine.bank.presentation.viewmodel.operations.OperationsVie
 @Composable
 fun OperationsTopBar(
     state: OperationsViewModel.State,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     val title = state.account?.label?.uppercase() ?: "DETAILS"
 
@@ -94,8 +93,31 @@ fun OperationsBalance(account: Account?) {
 @Composable
 private fun OperationsTopBarPreview() {
     OperationsTopBar(
-        state = OperationsViewModel.State(
-            account = Account(
+        state =
+            OperationsViewModel.State(
+                account =
+                    Account(
+                        id = "1",
+                        label = "Compte Courant",
+                        balance = 1234.56,
+                        holder = "Test Holder",
+                        operations = emptyList(),
+                        role = 1,
+                        order = 1,
+                        contractNumber = "123",
+                        productCode = "CODE",
+                    ),
+            ),
+        onBackClick = {},
+    )
+}
+
+@Preview
+@Composable
+private fun OperationsBalancePreview() {
+    OperationsBalance(
+        account =
+            Account(
                 id = "1",
                 label = "Compte Courant",
                 balance = 1234.56,
@@ -104,27 +126,7 @@ private fun OperationsTopBarPreview() {
                 role = 1,
                 order = 1,
                 contractNumber = "123",
-                productCode = "CODE"
-            )
-        ),
-        onBackClick = {}
-    )
-}
-
-@Preview
-@Composable
-private fun OperationsBalancePreview() {
-    OperationsBalance(
-        account = Account(
-            id = "1",
-            label = "Compte Courant",
-            balance = 1234.56,
-            holder = "Test Holder",
-            operations = emptyList(),
-            role = 1,
-            order = 1,
-            contractNumber = "123",
-            productCode = "CODE"
-        )
+                productCode = "CODE",
+            ),
     )
 }

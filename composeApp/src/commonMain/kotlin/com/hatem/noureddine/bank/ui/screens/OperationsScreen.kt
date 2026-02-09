@@ -72,14 +72,14 @@ fun OperationsScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        snackbarHost = { SnackbarHost(snackbarHostState) }
+        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { innerPadding ->
         OperationsContent(
             state = state,
             onBackClick = onBackClick,
             sharedTransitionScope = sharedTransitionScope,
             animatedVisibilityScope = animatedVisibilityScope,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
         )
     }
 }
@@ -133,15 +133,16 @@ fun OperationsContent(
                 if (state.operations.isEmpty()) {
                     item {
                         Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(200.dp),
-                            contentAlignment = Alignment.Center
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .height(200.dp),
+                            contentAlignment = Alignment.Center,
                         ) {
                             Text(
                                 text = "No operations",
                                 style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
                     }
@@ -154,9 +155,9 @@ fun OperationsContent(
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.primary,
                                 modifier =
-                                Modifier
-                                    .fillMaxWidth()
-                                    .padding(start = 24.dp, top = 24.dp, bottom = 8.dp),
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .padding(start = 24.dp, top = 24.dp, bottom = 8.dp),
                             )
                         }
                         items(operations) { operation ->
