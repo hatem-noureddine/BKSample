@@ -191,6 +191,10 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
+          
+      - name: Accept Android Licenses
+        run: yes | sdkmanager --licenses || true
+
       - name: Run Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:

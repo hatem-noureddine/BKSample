@@ -3,9 +3,10 @@ package com.hatem.noureddine.bank.ui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
-import androidx.compose.ui.test.assertDoesNotExist
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.hatem.noureddine.bank.domain.model.Account
@@ -186,6 +187,6 @@ class AccountsScreenTest {
             }
         }
 
-        composeTestRule.onNodeWithText("Compte Courant").assertDoesNotExist()
+        composeTestRule.onAllNodesWithText("Compte Courant").assertCountEquals(0)
     }
 }
