@@ -58,7 +58,9 @@ internal fun Project.configureKotlin() {
             freeCompilerArgs.addAll(
                 "-Xwhen-guards",
                 "-Xnested-type-aliases",
+                "-Xexpect-actual-classes",
             )
+
         }
     }
 }
