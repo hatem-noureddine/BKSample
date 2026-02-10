@@ -198,7 +198,7 @@ jobs:
           target: google_apis
           arch: arm64-v8a
           script: ./gradlew connectedAndroidTest
-          profile: Pixel 5
+          profile: Nexus 6
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
