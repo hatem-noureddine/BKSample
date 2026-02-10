@@ -33,5 +33,4 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.bundles.koin)
     implementation(libs.koin.android)
-    implementation(libs.koin.androidx.startup)
 }

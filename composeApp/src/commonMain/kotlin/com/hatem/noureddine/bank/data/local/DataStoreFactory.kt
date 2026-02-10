@@ -19,9 +19,11 @@ fun createDataStore(path: String): DataStore<Preferences> =
  * Platform-agnostic factory for creating a [DataStore] instance.
  * Expect/Actual mechanism allows platform-specific file path resolution.
  */
-expect class DataStoreFactory() {
+fun interface DataStoreFactory {
     /**
      * Builds and returns the [DataStore] instance.
      */
     fun build(): DataStore<Preferences>
 }
+
+expect fun getDataStoreFactory(): DataStoreFactory

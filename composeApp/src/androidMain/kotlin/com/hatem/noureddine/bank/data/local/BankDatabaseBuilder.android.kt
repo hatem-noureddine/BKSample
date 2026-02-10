@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package com.hatem.noureddine.bank.data.local
 
 import android.content.Context
@@ -13,8 +15,8 @@ import org.koin.mp.KoinPlatform
  * It retrieves the context from Koin, loads the native library, and configures
  * the database builder with the required passphrase and factories.
  */
-actual class BankDatabaseBuilder {
-    actual fun build(): BankDatabase {
+private class BankDatabaseBuilderAndroid : BankDatabaseBuilder {
+    override fun build(): BankDatabase {
         val context = KoinPlatform.getKoin().get<Context>()
 
         // load SQL Cipher to encrypt database
@@ -33,3 +35,5 @@ actual class BankDatabaseBuilder {
             .build()
     }
 }
+
+actual fun getBankDatabaseBuilder(): BankDatabaseBuilder = BankDatabaseBuilderAndroid()

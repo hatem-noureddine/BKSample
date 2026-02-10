@@ -9,10 +9,12 @@ import org.koin.mp.KoinPlatform
  * Android implementation for creating DataStore.
  * Resolves the absolute path for the preferences file using the application context.
  */
-actual class DataStoreFactory {
-    actual fun build(): DataStore<Preferences> {
+private class DataStoreFactoryAndroid : DataStoreFactory {
+    override fun build(): DataStore<Preferences> {
         val context = KoinPlatform.getKoin().get<Context>()
         val path = context.filesDir.resolve(DATA_STORE_FILE_NAME).absolutePath
         return createDataStore(path = path)
     }
 }
+
+actual fun getDataStoreFactory(): DataStoreFactory = DataStoreFactoryAndroid()

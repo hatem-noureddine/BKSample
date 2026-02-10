@@ -8,9 +8,11 @@ import com.hatem.noureddine.bank.utlis.documentDirectory
  * iOS implementation for creating DataStore.
  * Resolves the absolute path for the preferences file in the document directory.
  */
-actual class DataStoreFactory {
-    actual fun build(): DataStore<Preferences> {
+private class DataStoreFactoryIOS : DataStoreFactory {
+    override fun build(): DataStore<Preferences> {
         val path = "${documentDirectory()}/$DATA_STORE_FILE_NAME"
         return createDataStore(path = path)
     }
 }
+
+actual fun getDataStoreFactory(): DataStoreFactory = DataStoreFactoryIOS()

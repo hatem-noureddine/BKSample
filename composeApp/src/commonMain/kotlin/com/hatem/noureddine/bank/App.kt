@@ -1,6 +1,5 @@
 package com.hatem.noureddine.bank
 
-import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.hatem.noureddine.bank.di.sharedKoinModules
 import com.hatem.noureddine.bank.presentation.viewmodel.accounts.AccountsViewModel
 import com.hatem.noureddine.bank.presentation.viewmodel.main.MainViewModel
 import com.hatem.noureddine.bank.presentation.viewmodel.settings.SettingsViewModel
@@ -26,11 +26,21 @@ import com.hatem.noureddine.bank.ui.screens.AccountsScreen
 import com.hatem.noureddine.bank.ui.screens.OperationsScreen
 import com.hatem.noureddine.bank.ui.screens.SettingsScreen
 import com.hatem.noureddine.bank.ui.theme.BankTheme
+import org.koin.compose.KoinMultiplatformApplication
 import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
+import org.koin.dsl.koinConfiguration
 
-@OptIn(ExperimentalSharedTransitionApi::class)
+@OptIn(KoinExperimentalAPI::class)
 @Composable
 fun App() {
+    KoinMultiplatformApplication(config = koinConfiguration { modules(sharedKoinModules) }) {
+        HomeScreen()
+    }
+}
+
+@Composable
+fun HomeScreen() {
     BankTheme {
         val viewModel = koinViewModel<MainViewModel>()
         val state by viewModel.uiState.collectAsStateWithLifecycle()

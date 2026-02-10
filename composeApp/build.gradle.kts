@@ -71,7 +71,6 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
-            implementation(libs.koin.androidx.startup)
             implementation(libs.sqlcipher.android)
         }
         iosMain.dependencies {
