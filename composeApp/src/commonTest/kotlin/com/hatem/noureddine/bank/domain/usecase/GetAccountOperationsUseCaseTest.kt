@@ -44,13 +44,22 @@ class GetAccountOperationsUseCaseTest {
         object : BankRepository {
             override fun getBanks(): Flow<List<Bank>> = flowOf(emptyList())
 
-            override fun getAccount(id: String): Flow<Account?> = if (id == "acc1") flowOf(fakeAccount) else flowOf(null)
+            override fun getAccount(id: String): Flow<Account?> =
+                if (id == "acc1") {
+                    flowOf(fakeAccount)
+                } else {
+                    flowOf(null)
+                }
 
-            override suspend fun syncData(forceRefresh: Boolean) {}
+            @Suppress("EmptyFunctionBlock")
+            override suspend fun syncData(forceRefresh: Boolean) {
+            }
 
             override fun getLastSyncTime(): Flow<Long?> = flowOf(null)
 
-            override suspend fun clearLastSyncTime() {}
+            @Suppress("EmptyFunctionBlock")
+            override suspend fun clearLastSyncTime() {
+            }
         }
 
     @Test

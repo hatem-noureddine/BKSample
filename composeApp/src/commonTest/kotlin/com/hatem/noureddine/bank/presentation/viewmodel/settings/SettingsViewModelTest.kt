@@ -1,6 +1,7 @@
 package com.hatem.noureddine.bank.presentation.viewmodel.settings
 
 import com.hatem.noureddine.bank.domain.model.AppMode
+import com.hatem.noureddine.bank.domain.model.Bank
 import com.hatem.noureddine.bank.domain.repository.SettingsRepository
 import com.hatem.noureddine.bank.domain.usecase.GetAppModeUseCase
 import com.hatem.noureddine.bank.domain.usecase.SetAppModeUseCase
@@ -8,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
@@ -50,19 +52,25 @@ class SettingsViewModelTest {
             val repo = FakeSettingsRepository()
             val bankRepo =
                 object : com.hatem.noureddine.bank.domain.repository.BankRepository {
-                    override fun getBanks() = kotlinx.coroutines.flow.flowOf(emptyList<com.hatem.noureddine.bank.domain.model.Bank>())
+                    override fun getBanks() = flowOf(emptyList<Bank>())
 
-                    override fun getAccount(id: String) = kotlinx.coroutines.flow.flowOf(null)
+                    override fun getAccount(id: String) = flowOf(null)
 
-                    override fun getLastSyncTime() = kotlinx.coroutines.flow.flowOf(null)
+                    override fun getLastSyncTime() = flowOf(null)
 
-                    override suspend fun syncData(forceRefresh: Boolean) {}
+                    @Suppress("EmptyFunctionBlock")
+                    override suspend fun syncData(forceRefresh: Boolean) {
+                    }
 
-                    override suspend fun clearLastSyncTime() {}
+                    @Suppress("EmptyFunctionBlock")
+                    override suspend fun clearLastSyncTime() {
+                    }
                 }
             val dataSourceSwitcher =
                 object : com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher {
-                    override fun switch(mode: AppMode) {}
+                    @Suppress("EmptyFunctionBlock")
+                    override fun switch(mode: AppMode) {
+                    }
                 }
             val viewModel =
                 SettingsViewModel(
@@ -81,19 +89,25 @@ class SettingsViewModelTest {
             val repo = FakeSettingsRepository()
             val bankRepo =
                 object : com.hatem.noureddine.bank.domain.repository.BankRepository {
-                    override fun getBanks() = kotlinx.coroutines.flow.flowOf(emptyList<com.hatem.noureddine.bank.domain.model.Bank>())
+                    override fun getBanks() = kotlinx.coroutines.flow.flowOf(emptyList<Bank>())
 
                     override fun getAccount(id: String) = kotlinx.coroutines.flow.flowOf(null)
 
                     override fun getLastSyncTime() = kotlinx.coroutines.flow.flowOf(null)
 
-                    override suspend fun syncData(forceRefresh: Boolean) {}
+                    @Suppress("EmptyFunctionBlock")
+                    override suspend fun syncData(forceRefresh: Boolean) {
+                    }
 
-                    override suspend fun clearLastSyncTime() {}
+                    @Suppress("EmptyFunctionBlock")
+                    override suspend fun clearLastSyncTime() {
+                    }
                 }
             val dataSourceSwitcher =
                 object : com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher {
-                    override fun switch(mode: AppMode) {}
+                    @Suppress("EmptyFunctionBlock")
+                    override fun switch(mode: AppMode) {
+                    }
                 }
             val viewModel =
                 SettingsViewModel(

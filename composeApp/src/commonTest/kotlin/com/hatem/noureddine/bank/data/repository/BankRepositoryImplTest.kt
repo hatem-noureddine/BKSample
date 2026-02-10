@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import kotlin.collections.List
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -27,6 +26,7 @@ import kotlin.test.assertTrue
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
+@Suppress("Indentation")
 @OptIn(ExperimentalTime::class)
 class BankRepositoryImplTest {
     private class FakeBankDao : BankDao {
@@ -38,19 +38,32 @@ class BankRepositoryImplTest {
 
         override fun getBanksWithAccounts(): Flow<List<BankWithAccounts>> = banksWithAccountsFlow
 
+        @Suppress("MaxLineLength", "ParameterListWrapping")
         override fun getAccountWithOperations(accountId: String): Flow<AccountWithOperations?> = accountWithOperationsFlow
 
-        override suspend fun insertBanks(banks: List<BankEntity>) {}
+        @Suppress("EmptyFunctionBlock")
+        override suspend fun insertBanks(banks: List<BankEntity>) {
+        }
 
-        override suspend fun insertAccounts(accounts: List<AccountEntity>) {}
+        @Suppress("EmptyFunctionBlock")
+        override suspend fun insertAccounts(accounts: List<AccountEntity>) {
+        }
 
-        override suspend fun insertOperations(operations: List<OperationEntity>) {}
+        @Suppress("EmptyFunctionBlock")
+        override suspend fun insertOperations(operations: List<OperationEntity>) {
+        }
 
-        override suspend fun clearBanks() {}
+        @Suppress("EmptyFunctionBlock")
+        override suspend fun clearBanks() {
+        }
 
-        override suspend fun clearAccounts() {}
+        @Suppress("EmptyFunctionBlock")
+        override suspend fun clearAccounts() {
+        }
 
-        override suspend fun clearOperations() {}
+        @Suppress("EmptyFunctionBlock")
+        override suspend fun clearOperations() {
+        }
 
         override suspend fun replaceAll(
             banks: List<BankEntity>,
