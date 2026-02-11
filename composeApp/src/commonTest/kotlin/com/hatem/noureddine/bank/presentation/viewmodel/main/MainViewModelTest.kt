@@ -1,7 +1,7 @@
 package com.hatem.noureddine.bank.presentation.viewmodel.main
 
-import com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher
 import com.hatem.noureddine.bank.domain.model.AppMode
+import com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher
 import com.hatem.noureddine.bank.domain.repository.SettingsRepository
 import com.hatem.noureddine.bank.domain.usecase.GetAppModeUseCase
 import kotlinx.coroutines.Dispatchers

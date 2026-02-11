@@ -134,13 +134,11 @@ fun AccountsScreen(
     }
 }
 
-
-
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Preview
 @Composable
 private fun AccountsScreenPreview(
-    @PreviewParameter(AccountsPreviewParameterProvider::class) state: AccountsViewModel.State
+    @PreviewParameter(AccountsPreviewParameterProvider::class) state: AccountsViewModel.State,
 ) {
     SharedTransitionLayout {
         AnimatedVisibility(visible = true) {
@@ -150,7 +148,7 @@ private fun AccountsScreenPreview(
                 onAccountClick = {},
                 effectFlow = emptyFlow(),
                 sharedTransitionScope = this@SharedTransitionLayout,
-                animatedVisibilityScope = this
+                animatedVisibilityScope = this,
             )
         }
     }

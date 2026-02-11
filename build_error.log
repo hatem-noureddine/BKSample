@@ -1,0 +1,36 @@
+Reusing configuration cache.
+> Task :composeApp:kmpPartiallyResolvedDependenciesChecker
+> Task :composeApp:generateSecrets UP-TO-DATE
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:generateComposeResClass UP-TO-DATE
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain UP-TO-DATE
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain UP-TO-DATE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain UP-TO-DATE
+> Task :composeApp:generateResourceAccessorsForCommonMain UP-TO-DATE
+> Task :composeApp:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :composeApp:kspCommonMainKotlinMetadata UP-TO-DATE
+> Task :composeApp:copyRoomSchemas NO-SOURCE
+
+> Task :composeApp:compileCommonMainKotlinMetadata FAILED
+e: file:///Users/hatemnoureddine/workspace/kmp/BankTest/composeApp/build/generated/ksp/metadata/commonMain/kotlin/com/hatem/noureddine/bank/data/local/BankDatabaseConstructor.kt:5:22 'public final actual object BankDatabaseConstructor : RoomDatabaseConstructor<BankDatabase>' has no corresponding expected declaration
+e: file:///Users/hatemnoureddine/workspace/kmp/BankTest/composeApp/build/generated/ksp/metadata/commonMain/kotlin/com/hatem/noureddine/bank/data/local/BankDatabaseConstructor.kt:5:22 BankDatabaseConstructor: expect and corresponding actual are declared in the same module.
+e: file:///Users/hatemnoureddine/workspace/kmp/BankTest/composeApp/build/generated/ksp/metadata/commonMain/kotlin/com/hatem/noureddine/bank/data/local/BankDatabaseConstructor.kt:6:23 'public open actual override fun initialize(): BankDatabase' has no corresponding expected declaration
+e: file:///Users/hatemnoureddine/workspace/kmp/BankTest/composeApp/src/commonMain/kotlin/com/hatem/noureddine/bank/data/local/BankDatabaseConstructor.kt:7:15 BankDatabaseConstructor: expect and corresponding actual are declared in the same module.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':composeApp:compileCommonMainKotlinMetadata'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1s
+10 actionable tasks: 2 executed, 8 up-to-date
+Configuration cache entry reused.

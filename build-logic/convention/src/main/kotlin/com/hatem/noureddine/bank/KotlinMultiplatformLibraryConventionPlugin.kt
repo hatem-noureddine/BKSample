@@ -48,7 +48,7 @@ class KotlinMultiplatformLibraryConventionPlugin : Plugin<Project> {
                     }
 
                     withDeviceTest {
-                        instrumentationRunner = "com.hatem.noureddine.bank.BankTestRunner"
+                        instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     }
                 }
 

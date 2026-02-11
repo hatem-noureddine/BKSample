@@ -14,30 +14,31 @@ import org.junit.Rule
 import org.junit.Test
 
 class OperationsScreenTest {
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Test
     fun operationsScreen_displaysBalance_whenLoaded() {
-        val account = Account(
-            id = "1",
-            order = 1,
-            holder = "Holder",
-            role = 1,
-            contractNumber = "123",
-            label = "Test Account",
-            productCode = "Code",
-            balance = 2500.0,
-            operations = emptyList()
-        )
-        
-        val state = OperationsViewModel.State(
-            isLoading = false,
-            account = account,
-            groupedOperations = emptyMap()
-        )
+        val account =
+            Account(
+                id = "1",
+                order = 1,
+                holder = "Holder",
+                role = 1,
+                contractNumber = "123",
+                label = "Test Account",
+                productCode = "Code",
+                balance = 2500.0,
+                operations = emptyList(),
+            )
+
+        val state =
+            OperationsViewModel.State(
+                isLoading = false,
+                account = account,
+                groupedOperations = emptyMap(),
+            )
 
         composeTestRule.setContent {
             SharedTransitionLayout {
@@ -46,7 +47,7 @@ class OperationsScreenTest {
                         state = state,
                         onBackClick = {},
                         sharedTransitionScope = this@SharedTransitionLayout,
-                        animatedVisibilityScope = this
+                        animatedVisibilityScope = this,
                     )
                 }
             }

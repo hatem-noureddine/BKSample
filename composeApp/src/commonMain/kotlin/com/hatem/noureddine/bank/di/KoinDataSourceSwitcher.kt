@@ -4,11 +4,10 @@ import com.hatem.noureddine.bank.data.datasource.BankDataSource
 import com.hatem.noureddine.bank.data.datasource.BankMockDataSourceImpl
 import com.hatem.noureddine.bank.data.datasource.BankRemoteDataSourceImpl
 import com.hatem.noureddine.bank.domain.model.AppMode
+import com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.dsl.module
-
-import com.hatem.noureddine.bank.domain.repository.DataSourceSwitcher
 
 class KoinDataSourceSwitcher : DataSourceSwitcher {
     /**

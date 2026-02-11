@@ -7,6 +7,7 @@ package com.hatem.noureddine.bank.domain.model
 sealed class Bank {
     /** The name of the bank. */
     abstract val name: String
+
     /** The list of accounts associated with this bank. */
     abstract val accounts: List<Account>
 }

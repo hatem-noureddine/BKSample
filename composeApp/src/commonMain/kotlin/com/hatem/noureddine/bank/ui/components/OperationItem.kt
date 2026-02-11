@@ -94,12 +94,13 @@ fun OperationItem(operation: Operation) {
 @Preview
 @Composable
 private fun OperationItemPreview() {
-    val operation = Operation(
-        id = "1",
-        title = "Carrefour",
-        amount = -45.50,
-        category = "Shopping",
-        date = 1678886400
-    )
+    val operation =
+        Operation(
+            id = "1",
+            title = "Carrefour",
+            amount = -45.50,
+            category = "Shopping",
+            date = 1678886400,
+        )
     OperationItem(operation = operation)
 }

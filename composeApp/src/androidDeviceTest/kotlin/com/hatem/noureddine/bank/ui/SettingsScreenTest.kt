@@ -11,32 +11,32 @@ import org.junit.Rule
 import org.junit.Test
 
 class SettingsScreenTest {
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @Test
     fun settingsScreen_displaysOptions_andRegistersClick() {
-        val state = SettingsViewModel.State(
-             currentMode = AppMode.REMOTE
-        )
+        val state =
+            SettingsViewModel.State(
+                currentMode = AppMode.REMOTE,
+            )
 
         var intent: SettingsViewModel.Intent? = null
 
         composeTestRule.setContent {
             SettingsScreen(
                 state = state,
-                onIntent = { intent = it }
+                onIntent = { intent = it },
             )
         }
 
         composeTestRule.onNodeWithText("Settings").assertIsDisplayed()
         composeTestRule.onNodeWithText("Remote (Firebase)").assertIsDisplayed()
-        
+
         // Test interaction
         composeTestRule.onNodeWithText("Mock (Local)").performClick()
-        
-        // Verify intent was captured (manual assertion since we aren't asserting on a mock object here, 
+
+        // Verify intent was captured (manual assertion since we aren't asserting on a mock object here,
         // just lambda capture)
         assert(intent is SettingsViewModel.Intent.ChangeMode)
         assert((intent as SettingsViewModel.Intent.ChangeMode).mode == AppMode.MOCK)
@@ -44,14 +44,15 @@ class SettingsScreenTest {
 
     @Test
     fun settingsScreen_displaysMockSelected() {
-        val state = SettingsViewModel.State(
-            currentMode = AppMode.MOCK
-        )
+        val state =
+            SettingsViewModel.State(
+                currentMode = AppMode.MOCK,
+            )
 
         composeTestRule.setContent {
             SettingsScreen(
                 state = state,
-                onIntent = {}
+                onIntent = {},
             )
         }
 

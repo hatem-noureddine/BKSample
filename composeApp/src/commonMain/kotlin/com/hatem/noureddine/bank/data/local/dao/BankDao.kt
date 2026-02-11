@@ -35,7 +35,6 @@ interface BankDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBanks(banks: List<BankEntity>)
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAccounts(accounts: List<AccountEntity>)
 

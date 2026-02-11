@@ -15,6 +15,8 @@ jobs:
     name: Code Analysis (Lint & Detekt)
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -30,14 +32,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
-      - name: Run Detekt
-        run: ./gradlew detekt
-
-      - name: Run Ktlint Check
-        run: ./gradlew ktlintCheck
-
-      - name: Run Android Lint
-        run: ./gradlew lintDebug
+      - name: Run Code Analysis (Detekt, Ktlint, Lint)
+        run: ./gradlew detekt ktlintCheck lintDebug --continue
 
       - name: Run JVM Unit Tests (Coverage)
         run: ./gradlew :composeApp:jvmTest
@@ -49,17 +45,20 @@ jobs:
         run: ./gradlew koverXmlReport
 
       - name: Run Sonar Analysis
-        if: ${{ secrets.SONAR_TOKEN != '' }}
+        if: ${{ env.SONAR_TOKEN != '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonar
+
+      - name: Run Detekt Merge
+        if: always()
+        run: ./gradlew reportMerge --continue
 
       - name: Upload Detekt SARIF
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
-          sarif_file: '**/build/reports/detekt/detekt.sarif'
+          sarif_file: build/reports/detekt/merge.sarif
 
       - name: Upload Analysis Reports
         if: failure()
@@ -127,6 +126,14 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
+      - name: Cache Konan
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: ${{ runner.os }}-konan-${{ hashFiles('gradle/libs.versions.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-konan-
+
       - name: Run iOS Simulator Tests
         run: ./gradlew iosSimulatorArm64Test
 
@@ -166,7 +173,7 @@ jobs:
 
   instrumentation-test:
     name: Instrumentation Tests (Android)
-    runs-on: macos-latest # Hardware acceleration for emulator
+    runs-on: macos-13 # Pin to Intel Mac for x86_64 emulation stability
     timeout-minutes: 45
     needs: analysis
     steps:
@@ -184,14 +191,20 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
+          
+      - name: Accept Android Licenses
+        run: yes | sdkmanager --licenses || true
+
       - name: Run Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
+        with:
+          api-level: 30
           target: google_apis
-          arch: arm64-v8a
+          arch: x86_64
           script: ./gradlew connectedAndroidTest
-          profile: Pixel 4
+          profile: Nexus 6
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true

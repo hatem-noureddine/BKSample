@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package com.hatem.noureddine.bank.data.local
 
 import androidx.room.Room
@@ -10,8 +12,8 @@ import kotlinx.coroutines.IO
  * Uses the custom [SQLCipherNativeDriver] for encryption.
  * Locates the database file in the documents directory.
  */
-actual class BankDatabaseBuilder {
-    actual fun build(): BankDatabase {
+private class BankDatabaseBuilderIOS : BankDatabaseBuilder {
+    override fun build(): BankDatabase {
         val dbFilePath = documentDirectory() + "/${DATABASE_NAME}"
         val passphrase = DatabaseKeyProvider.getDatabaseKey()
         return Room
@@ -23,3 +25,5 @@ actual class BankDatabaseBuilder {
             .build()
     }
 }
+
+actual fun getBankDatabaseBuilder(): BankDatabaseBuilder = BankDatabaseBuilderIOS()

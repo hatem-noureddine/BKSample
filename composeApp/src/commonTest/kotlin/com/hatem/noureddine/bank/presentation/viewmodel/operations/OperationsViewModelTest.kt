@@ -139,29 +139,35 @@ class OperationsViewModelTest {
         runTest(testDispatcher) {
             // Day 1: 1672531200L (2023-01-01)
             // Day 2: 1672617600L (2023-01-02)
-            val day1_10am = 1672567200L
-            val day1_12pm = 1672574400L
+            val day1At10am = 1672567200L
+            val day1At12pm = 1672574400L
             val day2 = 1672617600L
 
-            val operations = listOf(
-                Operation("1", "Z_Title", 10.0, "cat", day1_12pm), // Day 1, later time
-                Operation("2", "A_Title", 10.0, "cat", day1_10am), // Day 1, earlier time
-                Operation("3", "B_Title", 10.0, "cat", day2)       // Day 2
-            )
+            val operations =
+                listOf(
+                    Operation("1", "Z_Title", 10.0, "cat", day1At12pm), // Day 1, later time
+                    Operation("2", "A_Title", 10.0, "cat", day1At10am), // Day 1, earlier time
+                    Operation("3", "B_Title", 10.0, "cat", day2), // Day 2
+                )
             // Expected Sort:
             // 1. Day 2 (B_Title) - Newest Day
             // 2. Day 1 (A_Title) - Alphabetical A
             // 3. Day 1 (Z_Title) - Alphabetical Z (even though timestamp is later than A)
 
             val sortedAccount = fakeAccount.copy(operations = operations)
-            
-            val mockRepo = object : BankRepository {
-                override fun getBanks() = flowOf(emptyList<Bank>())
-                override fun getAccount(id: String) = flowOf(sortedAccount)
-                override fun getLastSyncTime() = flowOf(0L)
-                override suspend fun syncData(forceRefresh: Boolean) {}
-                override suspend fun clearLastSyncTime() {}
-            }
+
+            val mockRepo =
+                object : BankRepository {
+                    override fun getBanks() = flowOf(emptyList<Bank>())
+
+                    override fun getAccount(id: String) = flowOf(sortedAccount)
+
+                    override fun getLastSyncTime() = flowOf(0L)
+
+                    override suspend fun syncData(forceRefresh: Boolean) {}
+
+                    override suspend fun clearLastSyncTime() {}
+                }
 
             val viewModel = OperationsViewModel(GetAccountDetailsUseCase(mockRepo))
             viewModel.handleIntent(OperationsViewModel.Intent.LoadAccount("acc1"))
@@ -169,22 +175,26 @@ class OperationsViewModelTest {
 
             val state = viewModel.uiState.value
             val resultTitles = state.operations.map { it.title }
-            
+
             assertEquals(listOf("B_Title", "A_Title", "Z_Title"), resultTitles)
         }
-
 
     @Test
     fun `LoadAccount loads account with empty operations`() =
         runTest(testDispatcher) {
             val emptyAccount = fakeAccount.copy(operations = emptyList())
-            val mockRepo = object : BankRepository {
-                override fun getBanks() = flowOf(emptyList<Bank>())
-                override fun getAccount(id: String) = flowOf(emptyAccount)
-                override fun getLastSyncTime() = flowOf(0L)
-                override suspend fun syncData(forceRefresh: Boolean) {}
-                override suspend fun clearLastSyncTime() {}
-            }
+            val mockRepo =
+                object : BankRepository {
+                    override fun getBanks() = flowOf(emptyList<Bank>())
+
+                    override fun getAccount(id: String) = flowOf(emptyAccount)
+
+                    override fun getLastSyncTime() = flowOf(0L)
+
+                    override suspend fun syncData(forceRefresh: Boolean) {}
+
+                    override suspend fun clearLastSyncTime() {}
+                }
 
             val viewModel = OperationsViewModel(GetAccountDetailsUseCase(mockRepo))
             viewModel.handleIntent(OperationsViewModel.Intent.LoadAccount("acc1"))
