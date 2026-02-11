@@ -173,7 +173,7 @@ jobs:
 
   instrumentation-test:
     name: Instrumentation Tests (Android)
-    runs-on: macos-latest # Hardware acceleration for emulator
+    runs-on: macos-13 # Pin to Intel Mac for x86_64 emulation stability
     timeout-minutes: 45
     needs: analysis
     steps:
@@ -199,8 +199,10 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
+        with:
+          api-level: 30
           target: google_apis
-          arch: arm64-v8a
+          arch: x86_64
           script: ./gradlew connectedAndroidTest
           profile: Nexus 6
           force-avd-creation: false
